@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "The University Library (Main Library)",
+    "coords": [14.6548, 121.0721],
+    "description": "Central hub of the UP Diliman University Library system.",
+    "college": "University Library",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Reference Services", "Wi-Fi"]
+  },
+  {
+    "id": 2,
+    "name": "College of Engineering Library I",
+    "coords": [14.6582, 121.0695],
+    "description": "Engineering Library at Melchor Hall.",
+    "college": "College of Engineering",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 3,
+    "name": "College of Engineering Library II",
+    "coords": [14.6576, 121.0679],
+    "description": "Engineering Library branch at the UP Alumni Engineers Centennial Hall.",
+    "college": "College of Engineering",
+    "status": "Active",
+    "hasStamp": false,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 4,
+    "name": "College of Science Library (CS Library)",
+    "coords": [14.6508, 121.0705],
+    "description": "Main library of the National Science Complex.",
+    "college": "College of Science",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 5,
+    "name": "School of Economics Library",
+    "coords": [14.6535, 121.0735],
+    "description": "Library of the UP School of Economics.",
+    "college": "School of Economics",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 6,
+    "name": "College of Law Library",
+    "coords": [14.6528, 121.0708],
+    "description": "Law library at Espiritu Hall.",
+    "college": "College of Law",
+    "status": "Active",
+    "hasStamp": false,
+    "features": ["Reading Areas", "Legal Databases", "Wi-Fi"]
+  },
+  {
+    "id": 7,
+    "name": "College of Architecture Library",
+    "coords": [14.6567, 121.0739],
+    "description": "Library of the College of Architecture.",
+    "college": "College of Architecture",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 8,
+    "name": "College of Arts and Letters Library (CAL Library)",
+    "coords": [14.6546, 121.0712],
+    "description": "Library of the College of Arts and Letters.",
+    "college": "College of Arts and Letters",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Wi-Fi", "Study Space"]
+  },
+  {
+    "id": 9,
+    "name": "Jorge B. Vargas Museum Library and Archives",
+    "coords": [14.6542, 121.0718],
+    "description": "Library and archives at the Jorge B. Vargas Museum.",
+    "college": "Vargas Museum",
+    "status": "Special Stop",
+    "hasStamp": true,
+    "features": ["Archives", "Research Materials", "By Appointment"]
+  }
+]
