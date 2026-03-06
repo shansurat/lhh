@@ -11,56 +11,16 @@
   },
   {
     "id": 2,
-    "name": "College of Engineering Library I",
-    "coords": [14.6582, 121.0695],
-    "description": "Engineering Library at Melchor Hall.",
-    "college": "College of Engineering",
+    "name": "Solheim Library (UP School of Archaeology)",
+    "coords": [14.6551, 121.0724],
+    "description": "Library of the UP School of Archaeology.",
+    "college": "UP School of Archaeology",
     "status": "Active",
     "hasStamp": true,
-    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+    "features": ["Reading Areas", "Wi-Fi", "Photocopy"]
   },
   {
     "id": 3,
-    "name": "College of Engineering Library II",
-    "coords": [14.6576, 121.0679],
-    "description": "Engineering Library branch at the UP Alumni Engineers Centennial Hall.",
-    "college": "College of Engineering",
-    "status": "Active",
-    "hasStamp": false,
-    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
-  },
-  {
-    "id": 4,
-    "name": "College of Science Library (CS Library)",
-    "coords": [14.6508, 121.0705],
-    "description": "Main library of the National Science Complex.",
-    "college": "College of Science",
-    "status": "Active",
-    "hasStamp": true,
-    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
-  },
-  {
-    "id": 5,
-    "name": "School of Economics Library",
-    "coords": [14.6535, 121.0735],
-    "description": "Library of the UP School of Economics.",
-    "college": "School of Economics",
-    "status": "Active",
-    "hasStamp": true,
-    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
-  },
-  {
-    "id": 6,
-    "name": "College of Law Library",
-    "coords": [14.6528, 121.0708],
-    "description": "Law library at Espiritu Hall.",
-    "college": "College of Law",
-    "status": "Active",
-    "hasStamp": false,
-    "features": ["Reading Areas", "Legal Databases", "Wi-Fi"]
-  },
-  {
-    "id": 7,
     "name": "College of Architecture Library",
     "coords": [14.6567, 121.0739],
     "description": "Library of the College of Architecture.",
@@ -70,23 +30,573 @@
     "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
   },
   {
-    "id": 8,
+    "id": 4,
     "name": "College of Arts and Letters Library (CAL Library)",
     "coords": [14.6546, 121.0712],
-    "description": "Library of the College of Arts and Letters.",
+    "description": "Main library of the College of Arts and Letters.",
     "college": "College of Arts and Letters",
     "status": "Active",
     "hasStamp": true,
-    "features": ["Reading Areas", "Wi-Fi", "Study Space"]
+    "features": ["Reading Areas", "Study Space", "Wi-Fi"]
+  },
+  {
+    "id": 5,
+    "name": "CAL Gonzalo Gonzalez Reading Room",
+    "coords": [14.6545, 121.0711],
+    "description": "Reading room under the College of Arts and Letters Library.",
+    "college": "College of Arts and Letters",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Room", "Quiet Study"]
+  },
+  {
+    "id": 6,
+    "name": "Asian Center Library",
+    "coords": [14.6539, 121.0742],
+    "description": "Library of the Asian Center.",
+    "college": "Asian Center",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 7,
+    "name": "Asian Institute of Tourism Library",
+    "coords": [14.6526, 121.0729],
+    "description": "Library of the Asian Institute of Tourism.",
+    "college": "Asian Institute of Tourism",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Wi-Fi", "Photocopy"]
+  },
+  {
+    "id": 8,
+    "name": "Cesar E.A. Virata School of Business Library (VSB Library)",
+    "coords": [14.6572, 121.0713],
+    "description": "Library of the Virata School of Business.",
+    "college": "Virata School of Business",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
   },
   {
     "id": 9,
-    "name": "Jorge B. Vargas Museum Library and Archives",
+    "name": "School of Economics Library",
+    "coords": [14.6535, 121.0735],
+    "description": "Library of the School of Economics.",
+    "college": "School of Economics",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 10,
+    "name": "College of Education Library",
+    "coords": [14.6541, 121.0717],
+    "description": "Library of the College of Education.",
+    "college": "College of Education",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 11,
+    "name": "College of Engineering Library I",
+    "coords": [14.6582, 121.0695],
+    "description": "Engineering Library I at Melchor Hall.",
+    "college": "College of Engineering",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 12,
+    "name": "College of Engineering Library II",
+    "coords": [14.6576, 121.0679],
+    "description": "Engineering Library II at UPAECH.",
+    "college": "College of Engineering",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 13,
+    "name": "Engineering Library Commons",
+    "coords": [14.6575, 121.0683],
+    "description": "Commons facility of the Engineering Library.",
+    "college": "College of Engineering",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Study Commons", "Wi-Fi", "Reading Areas"]
+  },
+  {
+    "id": 14,
+    "name": "24/7 Study Area and Student Wellness (SWELL) Room",
+    "coords": [14.6581, 121.0696],
+    "description": "Round-the-clock study area and wellness room in Engineering Library I.",
+    "college": "College of Engineering",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["24/7 Study Area", "Wellness Room"]
+  },
+  {
+    "id": 15,
+    "name": "College of Fine Arts Library (CFA Library)",
+    "coords": [14.6549, 121.0731],
+    "description": "Library of the College of Fine Arts.",
+    "college": "College of Fine Arts",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 16,
+    "name": "College of Home Economics Library (CHE Library)",
+    "coords": [14.6529, 121.0722],
+    "description": "Library of the College of Home Economics.",
+    "college": "College of Home Economics",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Wi-Fi", "Photocopy"]
+  },
+  {
+    "id": 17,
+    "name": "College of Human Kinetics Library (CHK Library)",
+    "coords": [14.6533, 121.0711],
+    "description": "Library of the College of Human Kinetics.",
+    "college": "College of Human Kinetics",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use"]
+  },
+  {
+    "id": 18,
+    "name": "Institute of Islamic Studies Library (IIS Library)",
+    "coords": [14.6527, 121.0714],
+    "description": "Library of the Institute of Islamic Studies.",
+    "college": "Institute of Islamic Studies",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 19,
+    "name": "Cipriano Cid Memorial Library (SOLAIR Library)",
+    "coords": [14.6556, 121.0706],
+    "description": "Library of the School of Labor and Industrial Relations.",
+    "college": "SOLAIR",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 20,
+    "name": "College of Law Library",
+    "coords": [14.6528, 121.0708],
+    "description": "Law library at Espiritu Hall.",
+    "college": "College of Law",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Legal Databases", "Reading Areas", "Wi-Fi"]
+  },
+  {
+    "id": 21,
+    "name": "UP BGC Law Library",
+    "coords": [14.5512, 121.0485],
+    "description": "UP Law satellite library in Bonifacio Global City.",
+    "college": "College of Law",
+    "status": "Special Stop",
+    "hasStamp": false,
+    "features": ["Satellite Library"]
+  },
+  {
+    "id": 22,
+    "name": "School of Library and Information Studies Library (SLIS Library)",
+    "coords": [14.6511, 121.0699],
+    "description": "Library of the School of Library and Information Studies.",
+    "college": "SLIS",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use"]
+  },
+  {
+    "id": 23,
+    "name": "Marine Science Institute Library (MSI Library)",
+    "coords": [14.6515, 121.0702],
+    "description": "Library of the Marine Science Institute.",
+    "college": "Marine Science Institute",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 24,
+    "name": "Bolinao Marine Laboratory Library (BML Library)",
+    "coords": [16.382, 119.901],
+    "description": "MSI satellite library at Bolinao Marine Laboratory.",
+    "college": "Marine Science Institute",
+    "status": "Special Stop",
+    "hasStamp": false,
+    "features": ["Satellite Library", "By Appointment"]
+  },
+  {
+    "id": 25,
+    "name": "College of Media and Communication Library (CMC Library)",
+    "coords": [14.6509, 121.0717],
+    "description": "Library of the College of Media and Communication.",
+    "college": "College of Media and Communication",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 26,
+    "name": "College of Music Library",
+    "coords": [14.6521, 121.0714],
+    "description": "Library of the College of Music.",
+    "college": "College of Music",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Wi-Fi", "Photocopy"]
+  },
+  {
+    "id": 27,
+    "name": "NCPAG Library",
+    "coords": [14.6518, 121.0725],
+    "description": "Library of the National College of Public Administration and Governance.",
+    "college": "NCPAG",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 28,
+    "name": "College of Science Library (CS Library)",
+    "coords": [14.6508, 121.0705],
+    "description": "Main library of the National Science Complex.",
+    "college": "College of Science",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 29,
+    "name": "CS Study Nook",
+    "coords": [14.6508, 121.0706],
+    "description": "24/7 study area in the College of Science Library.",
+    "college": "College of Science",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["24/7 Study Area"]
+  },
+  {
+    "id": 30,
+    "name": "Institute of Biology Library",
+    "coords": [14.6512, 121.0704],
+    "description": "Institute-level library under College of Science.",
+    "college": "College of Science",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Institute Collection"]
+  },
+  {
+    "id": 31,
+    "name": "Institute of Chemistry Library",
+    "coords": [14.651, 121.0701],
+    "description": "Institute-level library under College of Science.",
+    "college": "College of Science",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Institute Collection"]
+  },
+  {
+    "id": 32,
+    "name": "Institute of Environmental Science and Meteorology Library (IESM Library)",
+    "coords": [14.6514, 121.0698],
+    "description": "Institute-level library under College of Science.",
+    "college": "College of Science",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Institute Collection"]
+  },
+  {
+    "id": 33,
+    "name": "Institute of Mathematics Library",
+    "coords": [14.6516, 121.07],
+    "description": "Institute-level library under College of Science.",
+    "college": "College of Science",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Institute Collection"]
+  },
+  {
+    "id": 34,
+    "name": "Materials Science and Engineering Program Library",
+    "coords": [14.6517, 121.0697],
+    "description": "Program-level library under College of Science.",
+    "college": "College of Science",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Program Collection"]
+  },
+  {
+    "id": 35,
+    "name": "National Institute of Geological Sciences Library (NIGS Library)",
+    "coords": [14.6519, 121.0702],
+    "description": "Institute-level library under College of Science.",
+    "college": "College of Science",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Institute Collection"]
+  },
+  {
+    "id": 36,
+    "name": "National Institute of Molecular Biology and Biotechnology Library (NIMBB Library)",
+    "coords": [14.652, 121.0701],
+    "description": "Institute-level library under College of Science.",
+    "college": "College of Science",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Institute Collection"]
+  },
+  {
+    "id": 37,
+    "name": "National Institute of Physics Library (NIP Library)",
+    "coords": [14.6513, 121.0699],
+    "description": "Institute-level library under College of Science.",
+    "college": "College of Science",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Institute Collection"]
+  },
+  {
+    "id": 38,
+    "name": "Natural Sciences Research Institute Library (NSRI Library)",
+    "coords": [14.6514, 121.0703],
+    "description": "Institute-level library under College of Science.",
+    "college": "College of Science",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Institute Collection"]
+  },
+  {
+    "id": 39,
+    "name": "National Institute for Science and Mathematics Education Development Library (NISMED Library)",
+    "coords": [14.6499, 121.0687],
+    "description": "Library of NISMED.",
+    "college": "NISMED",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Wi-Fi"]
+  },
+  {
+    "id": 40,
+    "name": "College of Social Sciences and Philosophy Library (CSSP Library)",
+    "coords": [14.6523, 121.0719],
+    "description": "Main library of CSSP.",
+    "college": "CSSP",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Wi-Fi"]
+  },
+  {
+    "id": 41,
+    "name": "CSSP Reading Room (formerly Third World Studies Library)",
+    "coords": [14.6522, 121.072],
+    "description": "Reading room under CSSP.",
+    "college": "CSSP",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Room"]
+  },
+  {
+    "id": 42,
+    "name": "Population Institute Library",
+    "coords": [14.6521, 121.0718],
+    "description": "Library of the Population Institute.",
+    "college": "CSSP",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Specialized Collection"]
+  },
+  {
+    "id": 43,
+    "name": "College of Social Work and Community Development Library (CSWCD Library)",
+    "coords": [14.6554, 121.0709],
+    "description": "Library of CSWCD.",
+    "college": "CSWCD",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 44,
+    "name": "School of Statistics Library",
+    "coords": [14.6518, 121.0709],
+    "description": "Library of the School of Statistics.",
+    "college": "School of Statistics",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 45,
+    "name": "Technology Management Center Library (TMC Library)",
+    "coords": [14.6498, 121.0734],
+    "description": "Library of the Technology Management Center.",
+    "college": "Technology Management Center",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 46,
+    "name": "School of Urban and Regional Planning Library (SURP Library)",
+    "coords": [14.6558, 121.0707],
+    "description": "Library of SURP.",
+    "college": "SURP",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 47,
+    "name": "UP Diliman Extension Programs in Pampanga & Olongapo Libraries (UPEPP & UPEPO Libraries)",
+    "coords": [15.1855, 120.5607],
+    "description": "Libraries of UP Diliman Extension Programs in Pampanga and Olongapo.",
+    "college": "UPDEPP/UPDEPO",
+    "status": "Special Stop",
+    "hasStamp": false,
+    "features": ["Extension Libraries"]
+  },
+  {
+    "id": 48,
+    "name": "UP Integrated School Library (UPIS Library)",
+    "coords": [14.6502, 121.0729],
+    "description": "Library of UP Integrated School.",
+    "college": "UP Integrated School",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
+  },
+  {
+    "id": 49,
+    "name": "DZUP 1602 Research and Information Services",
+    "coords": [14.651, 121.0716],
+    "description": "Research and information services of DZUP.",
+    "college": "DZUP",
+    "status": "Special Stop",
+    "hasStamp": false,
+    "features": ["Information Services"]
+  },
+  {
+    "id": 50,
+    "name": "Center for Ethnomusicology Library",
+    "coords": [14.6522, 121.0715],
+    "description": "Library of the Center for Ethnomusicology.",
+    "college": "Center for Ethnomusicology",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Specialized Collection"]
+  },
+  {
+    "id": 51,
+    "name": "Center for Integrative and Development Studies Library (CIDS Library)",
+    "coords": [14.6538, 121.071],
+    "description": "Library of CIDS.",
+    "college": "CIDS",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas", "Research Support"]
+  },
+  {
+    "id": 52,
+    "name": "Naomi “Shoko” Matsumoto Technical Theater Library and Archive",
+    "coords": [14.6543, 121.0709],
+    "description": "Library and archive at the Center for International Studies.",
+    "college": "Center for International Studies",
+    "status": "Special Stop",
+    "hasStamp": false,
+    "features": ["Archive", "By Appointment"]
+  },
+  {
+    "id": 53,
+    "name": "Jorge B. Vargas Museum and Filipiniana Research Center Library and Archives",
     "coords": [14.6542, 121.0718],
-    "description": "Library and archives at the Jorge B. Vargas Museum.",
+    "description": "Library and archives of the Vargas Museum and Filipiniana Research Center.",
     "college": "Vargas Museum",
     "status": "Special Stop",
     "hasStamp": true,
     "features": ["Archives", "Research Materials", "By Appointment"]
+  },
+  {
+    "id": 54,
+    "name": "Institute for Small-Scale Industries Library (ISSI Library)",
+    "coords": [14.655, 121.0705],
+    "description": "Library of ISSI.",
+    "college": "Institute for Small-Scale Industries",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Specialized Collection"]
+  },
+  {
+    "id": 55,
+    "name": "National Center for Transportation Studies Library (NCTS Library)",
+    "coords": [14.6496, 121.0732],
+    "description": "Library of NCTS.",
+    "college": "NCTS",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Specialized Collection"]
+  },
+  {
+    "id": 56,
+    "name": "Center for Women’s and Gender Studies Library (UP CWGS Library)",
+    "coords": [14.6524, 121.0716],
+    "description": "Library of UP CWGS.",
+    "college": "UP CWGS",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Specialized Collection"]
+  },
+  {
+    "id": 57,
+    "name": "Vanguard Library",
+    "coords": [14.6519, 121.0713],
+    "description": "Library at the UP Vanguard Building.",
+    "college": "UP Vanguard",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Reading Areas"]
+  },
+  {
+    "id": 58,
+    "name": "Department of Linguistics Library",
+    "coords": [14.6525, 121.0722],
+    "description": "Department library of Linguistics.",
+    "college": "Department of Linguistics",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Department Collection"]
+  },
+  {
+    "id": 59,
+    "name": "Saliksikang Filipino (Sentro ng Wikang Filipino Diliman)",
+    "coords": [14.655, 121.0704],
+    "description": "Library resources of Sentro ng Wikang Filipino Diliman.",
+    "college": "SWF Diliman",
+    "status": "Active",
+    "hasStamp": true,
+    "features": ["Filipino Collections", "By Appointment"]
+  },
+  {
+    "id": 60,
+    "name": "UPFI Film Archives & Library",
+    "coords": [14.652, 121.0712],
+    "description": "Film archives and library of UP Film Institute.",
+    "college": "UP Film Institute",
+    "status": "Special Stop",
+    "hasStamp": false,
+    "features": ["Film Archives", "Special Collections"]
   }
 ]
