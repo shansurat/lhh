@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import L from "leaflet";
 import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
+import { LocateFixed } from "lucide-react";
 import "leaflet/dist/leaflet.css";
 
 type LibraryStop = {
@@ -66,9 +67,9 @@ export default function LibraryMap({
   onLibraryClick: (lib: LibraryStop) => void;
 }) {
   const visitedSet = useMemo(() => new Set(visitedIds), [visitedIds]);
-  const [currentLocation, setCurrentLocation] = useState<[number, number] | null>(
-    null,
-  );
+  const [currentLocation, setCurrentLocation] = useState<
+    [number, number] | null
+  >(null);
   const [locateTarget, setLocateTarget] = useState<[number, number] | null>(
     null,
   );
@@ -190,7 +191,8 @@ export default function LibraryMap({
 
       if (
         stage === "coarse" &&
-        (error.code === error.TIMEOUT || error.code === error.POSITION_UNAVAILABLE)
+        (error.code === error.TIMEOUT ||
+          error.code === error.POSITION_UNAVAILABLE)
       ) {
         navigator.geolocation.getCurrentPosition(
           onSuccess,
@@ -206,7 +208,8 @@ export default function LibraryMap({
 
       if (
         stage === "high-accuracy" &&
-        (error.code === error.TIMEOUT || error.code === error.POSITION_UNAVAILABLE)
+        (error.code === error.TIMEOUT ||
+          error.code === error.POSITION_UNAVAILABLE)
       ) {
         watchIdRef.current = navigator.geolocation.watchPosition(
           onSuccess,
@@ -225,7 +228,10 @@ export default function LibraryMap({
         return;
       }
 
-      if (error.code === error.TIMEOUT || error.code === error.POSITION_UNAVAILABLE) {
+      if (
+        error.code === error.TIMEOUT ||
+        error.code === error.POSITION_UNAVAILABLE
+      ) {
         handleTerminalError(
           "Location request timed out. Try again or check desktop location services.",
         );
@@ -243,9 +249,9 @@ export default function LibraryMap({
       onSuccess,
       (error) => onError(error, "coarse"),
       {
-      enableHighAccuracy: false,
-      timeout: 8000,
-      maximumAge: 600000,
+        enableHighAccuracy: false,
+        timeout: 8000,
+        maximumAge: 600000,
       },
     );
   };
@@ -271,9 +277,10 @@ export default function LibraryMap({
         zoom={16}
         zoomControl={false}
         className="h-full w-full"
+        attributionControl={false}
       >
         <TileLayer
-          attribution="&copy; OpenStreetMap contributors"
+          attribution="&copy; [OpenStreetMap contributors](https://openstreetmap.org)"
           url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
         />
         <MapController
@@ -299,16 +306,21 @@ export default function LibraryMap({
           ))}
       </MapContainer>
 
-      <div className="absolute right-4 top-4 z-1000 flex flex-col items-end gap-2">
+      <div className="absolute right-3 bottom-[calc(env(safe-area-inset-bottom)+5.5rem)] z-1000 flex flex-col items-end gap-2 lg:right-4 lg:top-4 lg:bottom-auto">
         <button
           type="button"
           onClick={handleLocateMe}
-          className="h-10 rounded-lg bg-white/95 px-3 text-[11px] font-bold uppercase tracking-wider text-slate-700 shadow-lg border border-slate-200 hover:bg-white disabled:opacity-70"
+          className="h-12 w-12 rounded-full bg-white/95 text-slate-700 shadow-lg border border-slate-200 hover:bg-white disabled:opacity-70 flex items-center justify-center lg:h-10 lg:w-auto lg:rounded-lg lg:px-3"
           aria-label="Show current location"
           title="Show current location"
           disabled={isLocating}
         >
-          {isLocating ? "Locating..." : "Locate me"}
+          <span className="lg:hidden">
+            <LocateFixed className={`size-4 ${isLocating ? "animate-pulse" : ""}`} />
+          </span>
+          <span className="hidden lg:inline">
+            {isLocating ? "Locating..." : "Locate me"}
+          </span>
         </button>
         {locationError && (
           <p className="max-w-52 rounded-md bg-[#7b1113] px-2 py-1 text-[10px] font-semibold text-white shadow-md">
