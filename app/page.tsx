@@ -212,11 +212,11 @@ export default function App() {
       >
         <div className="flex items-center gap-3">
           <div className="font-sans">
-            <h1 className="text-base sm:text-xl font-black tracking-tight text-white uppercase leading-none">
-              Library Hop <span className="text-[#f1c40f]">Checklist</span>
+            <h1 className="text-base sm:text-xl  tracking-tight text-white  leading-none">
+              <b>IskoLib</b>Map{" "}
             </h1>
             <p className="text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.16em] text-[#bdc3c7]">
-              Unofficial assistant
+              An Unofficial Guide to UP Diliman Libraries
             </p>
           </div>
         </div>
@@ -229,7 +229,9 @@ export default function App() {
             title="Toggle stamp-only libraries"
             className={`h-7 w-7 shrink-0 flex items-center justify-center rounded-md border transition-colors ${showStampPinsOnly ? "border-[#f1c40f] text-[#f1c40f] bg-white/10" : "border-white/30 text-white/70 hover:text-white"}`}
           >
-            <Star className={`size-4 ${showStampPinsOnly ? "fill-current" : ""}`} />
+            <Star
+              className={`size-4 ${showStampPinsOnly ? "fill-current" : ""}`}
+            />
           </button>
           <div className="hidden xs:block size-2 bg-[#014421] rounded-full animate-pulse" />
           <span className="text-[11px] sm:text-xs font-bold text-white font-sans">
@@ -343,7 +345,11 @@ export default function App() {
               aria-label="Toggle library list"
               title="Toggle library list"
             >
-              {isSidebarOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+              {isSidebarOpen ? (
+                <X className="size-5" />
+              ) : (
+                <Menu className="size-5" />
+              )}
             </button>
           )}
 
@@ -366,7 +372,10 @@ export default function App() {
                   onClick={() => {
                     setSelectedLibrary(null);
                     setSelectionSource(null);
-                    if (typeof window !== "undefined" && window.innerWidth < 1024) {
+                    if (
+                      typeof window !== "undefined" &&
+                      window.innerWidth < 1024
+                    ) {
                       setIsSidebarOpen(selectionSource === "list");
                     }
                   }}
