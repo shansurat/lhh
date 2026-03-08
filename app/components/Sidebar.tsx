@@ -1,11 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import {
   MapPin,
   Star,
   Search,
   Info,
   Settings,
+  List,
   X,
   CheckCircle2,
   Ticket,
@@ -41,11 +43,13 @@ export default function Sidebar({
   onCloseSelectedLibrary,
   onToggleVisit,
 }: SidebarProps) {
+  const [showLibraryBrowser, setShowLibraryBrowser] = useState(true);
+
   return (
     <aside
       style={{
         top: "calc(env(safe-area-inset-top) + 1rem)",
-        ...(isSidebarOpen && keyboardInset > 0
+        ...(isSidebarOpen && keyboardInset > 0 && showLibraryBrowser
           ? {
               bottom: `${keyboardInset}px`,
               maxHeight: `calc(100dvh - ${keyboardInset + 16}px)`,
@@ -53,9 +57,10 @@ export default function Sidebar({
           : {}),
       }}
       className={`
-          hidden lg:fixed left-4 right-4 bottom-4 lg:right-auto lg:bottom-4 lg:w-80 bg-white/95 z-1050 border border-slate-200 rounded-2xl shadow-2xl lg:flex flex-col font-sans pb-[env(safe-area-inset-bottom)] backdrop-blur-sm overflow-hidden
+          hidden lg:fixed left-4 right-4 lg:right-auto lg:w-80 bg-white/95 z-1050 border border-slate-200 rounded-2xl shadow-2xl lg:flex flex-col font-sans pb-[env(safe-area-inset-bottom)] backdrop-blur-sm overflow-hidden
+          ${showLibraryBrowser ? "lg:bottom-4" : "lg:bottom-auto"}
           ${isSidebarOpen && !selectedLibrary ? "translate-y-0 pointer-events-auto" : "translate-y-full pointer-events-none"}
-          ${isSidebarOpen && keyboardInset > 0 ? "h-[72dvh] lg:h-auto" : "h-[58vh] lg:h-auto"}
+          ${showLibraryBrowser ? (isSidebarOpen && keyboardInset > 0 ? "h-[72dvh] lg:h-auto" : "h-[58vh] lg:h-auto") : "h-auto"}
           lg:translate-y-0 lg:pointer-events-auto
         `}
     >
@@ -74,9 +79,26 @@ export default function Sidebar({
           <div className="hidden lg:flex items-center gap-1.5 shrink-0">
             <button
               type="button"
+              aria-label={
+                showLibraryBrowser
+                  ? "Hide libraries and search"
+                  : "Show libraries and search"
+              }
+              title={
+                showLibraryBrowser
+                  ? "Hide libraries and search"
+                  : "Show libraries and search"
+              }
+              onClick={() => setShowLibraryBrowser((prev) => !prev)}
+              className="h-7 w-7 shrink-0 flex items-center justify-center rounded-md text-slate-500 hover:text-slate-700 hover:bg-slate-100"
+            >
+              <List className="size-3.5" />
+            </button>
+            <button
+              type="button"
               aria-label="About"
               title="About"
-              className="h-7 w-7 shrink-0 flex items-center justify-center rounded-md border border-slate-300 text-slate-500 hover:text-slate-700"
+              className="h-7 w-7 shrink-0 flex items-center justify-center rounded-md text-slate-500 hover:text-slate-700 hover:bg-slate-100"
             >
               <Info className="size-3.5" />
             </button>
@@ -84,7 +106,7 @@ export default function Sidebar({
               type="button"
               aria-label="Settings"
               title="Settings"
-              className="h-7 w-7 shrink-0 flex items-center justify-center rounded-md border border-slate-300 text-slate-500 hover:text-slate-700"
+              className="h-7 w-7 shrink-0 flex items-center justify-center rounded-md text-slate-500 hover:text-slate-700 hover:bg-slate-100"
             >
               <Settings className="size-3.5" />
             </button>
@@ -104,62 +126,66 @@ export default function Sidebar({
             <X className="size-4" />
           </button>
         </div>
-        <div className="relative group">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-slate-400 group-focus-within:text-[#7b1113]" />
-          <input
-            type="text"
-            placeholder="Search libraries..."
-            className="w-full h-10 pl-10 pr-3 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:border-[#7b1113] focus:bg-white outline-none shadow-sm"
-            value={searchQuery}
-            onChange={(e) => onSearchQueryChange(e.target.value)}
-          />
-        </div>
+        {showLibraryBrowser && (
+          <div className="relative group">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-slate-400 group-focus-within:text-[#7b1113]" />
+            <input
+              type="text"
+              placeholder="Search libraries..."
+              className="w-full h-10 pl-10 pr-3 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:border-[#7b1113] focus:bg-white outline-none shadow-sm"
+              value={searchQuery}
+              onChange={(e) => onSearchQueryChange(e.target.value)}
+            />
+          </div>
+        )}
       </div>
 
-      <div
-        className={`minimal-scrollbar flex-1 overflow-y-auto px-3 py-3 space-y-2 pb-5 ${selectedLibrary ? "lg:hidden" : ""}`}
-      >
-        {filteredLibraries.map((lib) => (
-          <button
-            key={lib.id}
-            onClick={() => onLibraryClick(lib)}
-            className={`w-full text-left p-2.5 rounded-lg flex items-start gap-2.5 border group ${
-              selectedLibrary?.id === lib.id
-                ? "bg-[#7b1113]/5 border-[#7b1113]"
-                : "bg-white border-transparent hover:border-slate-100 hover:bg-slate-50"
-            }`}
-          >
-            <div
-              className={`mt-0.5 size-8 rounded-lg flex items-center justify-center shadow-sm shrink-0 ${
-                visited.has(lib.id)
-                  ? "bg-[#014421] text-white"
-                  : "bg-slate-100 text-slate-400"
+      {showLibraryBrowser && (
+        <div
+          className={`minimal-scrollbar flex-1 overflow-y-auto px-3 py-3 space-y-2 pb-5 ${selectedLibrary ? "lg:hidden" : ""}`}
+        >
+          {filteredLibraries.map((lib) => (
+            <button
+              key={lib.id}
+              onClick={() => onLibraryClick(lib)}
+              className={`w-full text-left p-2.5 rounded-lg flex items-start gap-2.5 border group ${
+                selectedLibrary?.id === lib.id
+                  ? "bg-[#7b1113]/5 border-[#7b1113]"
+                  : "bg-white border-transparent hover:border-slate-100 hover:bg-slate-50"
               }`}
             >
-              {visited.has(lib.id) ? (
-                <CheckCircle2 className="size-4" />
-              ) : (
-                <MapPin className="size-4" />
-              )}
-            </div>
-            <div className="flex-1 overflow-hidden">
-              <div className="flex items-center gap-1.5 min-w-0">
-                <h3
-                  className={`font-bold text-[13px] truncate ${selectedLibrary?.id === lib.id ? "text-[#7b1113]" : "text-slate-800"}`}
-                >
-                  {lib.name}
-                </h3>
-                {lib.hasStamp && (
-                  <Star className="size-3.5 text-[#f1c40f] fill-current shrink-0" />
+              <div
+                className={`mt-0.5 size-8 rounded-lg flex items-center justify-center shadow-sm shrink-0 ${
+                  visited.has(lib.id)
+                    ? "bg-[#014421] text-white"
+                    : "bg-slate-100 text-slate-400"
+                }`}
+              >
+                {visited.has(lib.id) ? (
+                  <CheckCircle2 className="size-4" />
+                ) : (
+                  <MapPin className="size-4" />
                 )}
               </div>
-              <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mt-0.5 truncate">
-                {lib.college}
-              </p>
-            </div>
-          </button>
-        ))}
-      </div>
+              <div className="flex-1 overflow-hidden">
+                <div className="flex items-center gap-1.5 min-w-0">
+                  <h3
+                    className={`font-bold text-[13px] truncate ${selectedLibrary?.id === lib.id ? "text-[#7b1113]" : "text-slate-800"}`}
+                  >
+                    {lib.name}
+                  </h3>
+                  {lib.hasStamp && (
+                    <Star className="size-3.5 text-[#f1c40f] fill-current shrink-0" />
+                  )}
+                </div>
+                <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mt-0.5 truncate">
+                  {lib.college}
+                </p>
+              </div>
+            </button>
+          ))}
+        </div>
+      )}
 
       {selectedLibrary && (
         <div className="hidden lg:flex flex-1 flex-col minimal-scrollbar overflow-y-auto p-4">
