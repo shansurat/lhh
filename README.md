@@ -1,5 +1,31 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Environment Variables
+
+Create `.env` in the project root:
+
+```bash
+NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=your_mapbox_public_token
+```
+
+## Firebase Hosting Deployment
+
+This project is configured for static Firebase Hosting (`next.config.ts` uses `output: "export"`, and `firebase.json` serves `out/`).
+
+Deploy steps:
+
+```bash
+npm install
+firebase login
+firebase use iskolibmap
+firebase deploy --only hosting
+```
+
+Notes:
+
+- `firebase deploy` runs `npm run build` automatically via `hosting.predeploy`.
+- Ensure `NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN` is set before deploy so it is baked into the static build.
+
 ## Getting Started
 
 First, run the development server:

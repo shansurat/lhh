@@ -6,6 +6,8 @@ import { LocateFixed } from "lucide-react";
 import "mapbox-gl/dist/mapbox-gl.css";
 import type { Library } from "../types/library";
 
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || "";
+
 export default function LibraryMap({
   libraries,
   selectedLibrary,
@@ -21,7 +23,6 @@ export default function LibraryMap({
   visitedIds: number[];
   onLibraryClick: (lib: Library) => void;
 }) {
-  mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || "";
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const libraryMarkersRef = useRef<mapboxgl.Marker[]>([]);
