@@ -4,9 +4,9 @@ export const dynamic = "force-static";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Library Hop Checklist",
+    name: "IskoLibMap",
     short_name: "Library Hop",
-    description: "Track your UP Diliman Library Hop stamps and visits.",
+    description: "An Unofficial Guide to UP Diliman Libraries",
     start_url: "/",
     scope: "/",
     display: "standalone",

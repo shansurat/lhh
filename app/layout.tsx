@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "IskoLibMap",
-    description: "An unofficial guide to UP Diliman libraries.",
+    description: "An Unofficial Guide to UP Diliman Libraries",
     url: "https://iskolibmap.web.app",
     siteName: "IskoLibMap",
     type: "website",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "IskoLibMap",
-    description: "An unofficial guide to UP Diliman libraries.",
+    description: "An Unofficial Guide to UP Diliman Libraries",
   },
   manifest: "/manifest.webmanifest",
 };
@@ -51,9 +51,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "IskoLibMap",
+    alternateName: "IskoLibMap",
+    url: "https://iskolibmap.web.app",
+  };
+
   return (
     <html lang="en">
       <body className={`${openSans.variable} ${poppins.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <PWARegister />
         {children}
       </body>
