@@ -15,14 +15,31 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "IskoLibMap",
+  metadataBase: new URL("https://iskolibmap.web.app"),
+  title: {
+    default: "IskoLibMap",
+    template: "%s | IskoLibMap",
+  },
   description: "An Unofficial Guide to UP Diliman Libraries",
-  manifest: "/manifest.webmanifest",
+  applicationName: "IskoLibMap",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
     title: "IskoLibMap",
   },
+  openGraph: {
+    title: "IskoLibMap",
+    description: "An unofficial guide to UP Diliman libraries.",
+    url: "https://iskolibmap.web.app",
+    siteName: "IskoLibMap",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "IskoLibMap",
+    description: "An unofficial guide to UP Diliman libraries.",
+  },
+  manifest: "/manifest.webmanifest",
 };
 
 export const viewport: Viewport = {
@@ -36,9 +53,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${openSans.variable} ${poppins.variable} antialiased`}
-      >
+      <body className={`${openSans.variable} ${poppins.variable} antialiased`}>
         <PWARegister />
         {children}
       </body>
