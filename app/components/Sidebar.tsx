@@ -14,6 +14,8 @@ import {
   Eye,
 } from "lucide-react";
 import PwaInstallButton from "./PwaInstallButton";
+import AuthActionButton from "./AuthActionButton";
+import ManageUsersLink from "./ManageUsersLink";
 import type { Library } from "../types/library";
 
 type SidebarProps = {
@@ -110,10 +112,15 @@ export default function Sidebar({
             >
               <Settings className="size-3.5" />
             </button>
+            <AuthActionButton
+              compact
+              className="h-7 w-7 shrink-0 rounded-md text-slate-500 hover:text-slate-700 hover:bg-slate-100"
+            />
           </div>
         </div>
         <div className="flex items-center gap-2 mb-2.5">
           <PwaInstallButton />
+          <ManageUsersLink />
         </div>
         <div className="lg:hidden flex items-center justify-between mb-2.5">
           <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500">

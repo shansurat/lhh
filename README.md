@@ -2,7 +2,44 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Environment Variables
 
-No environment variables are required for map rendering (Leaflet + OpenStreetMap tiles).
+Map rendering does not require env vars, but Firebase Authentication does.
+
+Create `.env` in the project root:
+
+```bash
+NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+```
+
+Also enable Firebase Auth providers in Firebase Console:
+
+- Email/Password
+
+## Roles and user management
+
+Roles are stored in Firestore under `profiles/{uid}` with one of these values:
+
+- `admin`
+- `superadmin`
+
+Behavior:
+
+- On successful sign-in, a missing role doc is auto-created as `admin`.
+- Only `superadmin` can access `/admin/users` and create new auth accounts.
+
+Bootstrap first superadmin:
+
+1. Sign in once with the account to create its `admin` role doc.
+2. In Firestore console, open `profiles/{uid}` for that account.
+3. Change `role` from `admin` to `superadmin`.
+
+To enable deleting Firebase Auth users from `/admin/users`, deploy functions:
+
+```bash
+firebase deploy --only functions
+```
 
 ## Firebase Hosting Deployment
 
@@ -20,6 +57,7 @@ firebase deploy --only hosting
 Notes:
 
 - `firebase deploy` runs `npm run build` automatically via `hosting.predeploy`.
+- If deploying through GitHub Actions, add the same `NEXT_PUBLIC_FIREBASE_*` values to repository secrets and pass them into the build step.
 
 ## Getting Started
 

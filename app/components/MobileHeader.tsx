@@ -1,6 +1,8 @@
 "use client";
 
 import { Search, Info, Settings } from "lucide-react";
+import AuthActionButton from "./AuthActionButton";
+import ManageUsersLink from "./ManageUsersLink";
 
 type MobileHeaderProps = {
   onOpenSearch: () => void;
@@ -35,6 +37,8 @@ export default function MobileHeader({ onOpenSearch }: MobileHeaderProps) {
           >
             <Settings className="size-4" />
           </button>
+          <ManageUsersLink compact />
+          <AuthActionButton compact />
           <button
             type="button"
             onClick={onOpenSearch}
