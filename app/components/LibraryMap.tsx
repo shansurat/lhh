@@ -1,12 +1,9 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import mapboxgl from "mapbox-gl";
 import { LocateFixed } from "lucide-react";
-import "mapbox-gl/dist/mapbox-gl.css";
+import "leaflet/dist/leaflet.css";
 import type { Library } from "../types/library";
-
-mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || "";
 
 export default function LibraryMap({
   libraries,
@@ -24,9 +21,10 @@ export default function LibraryMap({
   onLibraryClick: (lib: Library) => void;
 }) {
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
-  const mapRef = useRef<mapboxgl.Map | null>(null);
-  const libraryMarkersRef = useRef<mapboxgl.Marker[]>([]);
-  const userMarkerRef = useRef<mapboxgl.Marker | null>(null);
+  const mapRef = useRef<import("leaflet").Map | null>(null);
+  const leafletRef = useRef<typeof import("leaflet") | null>(null);
+  const libraryMarkersRef = useRef<import("leaflet").Marker[]>([]);
+  const userMarkerRef = useRef<import("leaflet").Marker | null>(null);
   const visitedSet = useMemo(() => new Set(visitedIds), [visitedIds]);
   const visibleLibraries = useMemo(
     () => libraries.filter((lib) => !showStampPinsOnly || lib.hasStamp),
@@ -40,6 +38,7 @@ export default function LibraryMap({
   );
   const [isLocating, setIsLocating] = useState(false);
   const [locationError, setLocationError] = useState<string | null>(null);
+  const [isMapReady, setIsMapReady] = useState(false);
   const watchIdRef = useRef<number | null>(null);
   const watchTimeoutRef = useRef<number | null>(null);
 
@@ -62,21 +61,41 @@ export default function LibraryMap({
   }, []);
 
   useEffect(() => {
-    if (!mapContainerRef.current || mapRef.current) {
-      return;
-    }
+    let isDisposed = false;
 
-    const map = new mapboxgl.Map({
-      container: mapContainerRef.current,
-      center: [121.0715, 14.6535],
-      zoom: 16,
-      attributionControl: false,
-      style: "mapbox://styles/mapbox/light-v11",
-    });
+    const initMap = async () => {
+      if (!mapContainerRef.current || mapRef.current) {
+        return;
+      }
 
-    mapRef.current = map;
+      const leaflet = await import("leaflet");
+      if (isDisposed || !mapContainerRef.current) {
+        return;
+      }
+
+      leafletRef.current = leaflet;
+
+      const map = leaflet.map(mapContainerRef.current, {
+        zoomControl: false,
+      });
+      map.setView([14.6535, 121.0715], 16);
+
+      leaflet
+        .tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+          attribution:
+            '&copy; OpenStreetMap contributors &copy; CARTO',
+          maxZoom: 19,
+        })
+        .addTo(map);
+
+      mapRef.current = map;
+      setIsMapReady(true);
+    };
+
+    void initMap();
 
     return () => {
+      isDisposed = true;
       libraryMarkersRef.current.forEach((marker) => marker.remove());
       libraryMarkersRef.current = [];
 
@@ -85,59 +104,61 @@ export default function LibraryMap({
         userMarkerRef.current = null;
       }
 
-      map.remove();
+      mapRef.current?.remove();
       mapRef.current = null;
+      setIsMapReady(false);
     };
   }, []);
 
   useEffect(() => {
     const map = mapRef.current;
 
-    if (!map) {
+    if (!map || !isMapReady) {
       return;
     }
 
     if (selectedLibrary) {
-      map.flyTo({
-        center: [selectedLibrary.coords[1], selectedLibrary.coords[0]],
-        zoom: 17,
-        duration: 500,
+      map.flyTo([selectedLibrary.coords[0], selectedLibrary.coords[1]], 17, {
+        duration: 0.5,
       });
     }
-  }, [selectedLibrary]);
+  }, [isMapReady, selectedLibrary]);
 
   useEffect(() => {
     const map = mapRef.current;
 
-    if (!map || !locateTarget) {
+    if (!map || !isMapReady || !locateTarget) {
       return;
     }
 
-    map.flyTo({
-      center: [locateTarget[1], locateTarget[0]],
-      zoom: 17,
-      duration: 500,
+    map.flyTo([locateTarget[0], locateTarget[1]], 17, {
+      duration: 0.5,
     });
-  }, [locateTarget]);
+  }, [isMapReady, locateTarget]);
 
   useEffect(() => {
     const map = mapRef.current;
 
-    if (!map) {
+    if (!map || !isMapReady) {
       return;
     }
 
     const timerId = setTimeout(() => {
-      map.resize();
+      map.invalidateSize();
     }, 250);
 
     return () => clearTimeout(timerId);
-  }, [isSidebarOpen]);
+  }, [isMapReady, isSidebarOpen]);
 
   useEffect(() => {
     const map = mapRef.current;
 
-    if (!map) {
+    if (!map || !isMapReady) {
+      return;
+    }
+
+    const leaflet = leafletRef.current;
+    if (!leaflet) {
       return;
     }
 
@@ -163,39 +184,35 @@ export default function LibraryMap({
         ? "0 10px 20px rgba(15, 23, 42, 0.35)"
         : "0 6px 12px rgba(15, 23, 42, 0.25)";
 
-      const el = document.createElement("div");
-      el.style.width = `${size}px`;
-      el.style.height = `${size}px`;
-      el.style.borderRadius = "9999px";
-      el.style.background = color;
-      el.style.border = `${borderWidth}px solid ${borderColor}`;
-      el.style.display = "flex";
-      el.style.alignItems = "center";
-      el.style.justifyContent = "center";
-      el.style.color = "white";
-      el.style.boxShadow = shadow;
-      el.style.cursor = "pointer";
-      el.style.zIndex = isSelected ? "1000" : "1";
-      el.innerHTML = iconSvg;
-      el.setAttribute("aria-label", lib.name);
+      const markerIcon = leaflet.divIcon({
+        className: "",
+        html: `<div aria-label="${lib.name}" style="width:${size}px;height:${size}px;border-radius:9999px;background:${color};border:${borderWidth}px solid ${borderColor};display:flex;align-items:center;justify-content:center;color:white;box-shadow:${shadow};cursor:pointer;">${iconSvg}</div>`,
+        iconSize: [size, size],
+        iconAnchor: [size / 2, size],
+      });
 
-      el.addEventListener("click", () => onLibraryClick(lib));
-
-      const marker = new mapboxgl.Marker({
-        element: el,
-        anchor: "bottom",
+      const marker = leaflet.marker([lib.coords[0], lib.coords[1]], {
+        icon: markerIcon,
+        title: lib.name,
       })
-        .setLngLat([lib.coords[1], lib.coords[0]])
         .addTo(map);
+
+      marker.on("click", () => onLibraryClick(lib));
+      marker.setZIndexOffset(isSelected ? 1000 : 0);
 
       libraryMarkersRef.current.push(marker);
     });
-  }, [onLibraryClick, selectedLibrary, visibleLibraries, visitedSet]);
+  }, [isMapReady, onLibraryClick, selectedLibrary, visibleLibraries, visitedSet]);
 
   useEffect(() => {
     const map = mapRef.current;
 
-    if (!map) {
+    if (!map || !isMapReady) {
+      return;
+    }
+
+    const leaflet = leafletRef.current;
+    if (!leaflet) {
       return;
     }
 
@@ -207,25 +224,23 @@ export default function LibraryMap({
       return;
     }
 
-    const markerEl = document.createElement("div");
-    markerEl.style.width = "24px";
-    markerEl.style.height = "24px";
-    markerEl.style.borderRadius = "9999px";
-    markerEl.style.background = "#2563eb";
-    markerEl.style.border = "2px solid #ffffff";
-    markerEl.style.boxShadow = "0 6px 12px rgba(15, 23, 42, 0.25)";
+    const markerIcon = leaflet.divIcon({
+      className: "",
+      html: '<div style="width:24px;height:24px;border-radius:9999px;background:#2563eb;border:2px solid #ffffff;box-shadow:0 6px 12px rgba(15, 23, 42, 0.25);"></div>',
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+    });
 
     if (userMarkerRef.current) {
       userMarkerRef.current.remove();
     }
 
-    userMarkerRef.current = new mapboxgl.Marker({
-      element: markerEl,
-      anchor: "center",
-    })
-      .setLngLat([currentLocation[1], currentLocation[0]])
+    userMarkerRef.current = leaflet
+      .marker([currentLocation[0], currentLocation[1]], {
+        icon: markerIcon,
+      })
       .addTo(map);
-  }, [currentLocation]);
+  }, [currentLocation, isMapReady]);
 
   const handleLocateMe = () => {
     if (typeof navigator === "undefined" || !navigator.geolocation) {

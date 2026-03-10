@@ -144,7 +144,7 @@ export default function App() {
   return (
     <div className="relative h-dvh min-h-dvh bg-[#fdfaf6] text-slate-900 overflow-hidden">
       <style>{`
-        .mapboxgl-map, .mapboxgl-canvas-container { font-family: inherit; cursor: crosshair; background: #fdfaf6; }
+        .leaflet-container { font-family: inherit; cursor: crosshair; background: #fdfaf6; }
         .minimal-scrollbar {
           scrollbar-width: thin;
           scrollbar-color: transparent transparent;

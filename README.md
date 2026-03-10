@@ -2,11 +2,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Environment Variables
 
-Create `.env` in the project root:
-
-```bash
-NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=your_mapbox_public_token
-```
+No environment variables are required for map rendering (Leaflet + OpenStreetMap tiles).
 
 ## Firebase Hosting Deployment
 
@@ -24,7 +20,6 @@ firebase deploy --only hosting
 Notes:
 
 - `firebase deploy` runs `npm run build` automatically via `hosting.predeploy`.
-- Ensure `NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN` is set before deploy so it is baked into the static build.
 
 ## Getting Started
 
