@@ -2,11 +2,11 @@
   {
     "id": 1,
     "name": "The University Library (Main Library)",
-    "coords": [14.6548, 121.0721],
+    "coords": [14.649163818748006, 121.06540417678416],
     "description": "Central hub of the UP Diliman University Library system.",
     "college": "University Library",
     "status": "Active",
-    "hasStamp": false,
+    "hasStamp": true,
     "features": ["Reading Areas", "Reference Services", "Wi-Fi"]
   },
   {
@@ -72,11 +72,11 @@
   {
     "id": 8,
     "name": "Cesar E.A. Virata School of Business Library (VSB Library)",
-    "coords": [14.6572, 121.0713],
+    "coords": [14.655028730277595, 121.07356440143371],
     "description": "Library of the Virata School of Business.",
     "college": "Virata School of Business",
     "status": "Active",
-    "hasStamp": false,
+    "hasStamp": true,
     "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
   },
   {
@@ -92,11 +92,11 @@
   {
     "id": 10,
     "name": "College of Education Library",
-    "coords": [14.6541, 121.0717],
+    "coords": [14.653375393961381, 121.07209537587599],
     "description": "Library of the College of Education.",
     "college": "College of Education",
     "status": "Active",
-    "hasStamp": false,
+    "hasStamp": true,
     "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
   },
   {
@@ -162,21 +162,21 @@
   {
     "id": 17,
     "name": "College of Human Kinetics Library (CHK Library)",
-    "coords": [14.6533, 121.0711],
+    "coords": [14.65814039968203, 121.06166653844774],
     "description": "Library of the College of Human Kinetics.",
     "college": "College of Human Kinetics",
     "status": "Active",
-    "hasStamp": false,
+    "hasStamp": true,
     "features": ["Reading Areas", "Computer Use"]
   },
   {
     "id": 18,
     "name": "Institute of Islamic Studies Library (IIS Library)",
-    "coords": [14.6527, 121.0714],
+    "coords": [14.656578315813633, 121.06181898460586],
     "description": "Library of the Institute of Islamic Studies.",
     "college": "Institute of Islamic Studies",
     "status": "Active",
-    "hasStamp": false,
+    "hasStamp": true,
     "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
   },
   {
@@ -192,11 +192,11 @@
   {
     "id": 20,
     "name": "College of Law Library",
-    "coords": [14.6528, 121.0708],
+    "coords": [14.65683411935009, 121.07227768327633],
     "description": "Law library at Espiritu Hall.",
     "college": "College of Law",
     "status": "Active",
-    "hasStamp": false,
+    "hasStamp": true,
     "features": ["Legal Databases", "Reading Areas", "Wi-Fi"]
   },
   {
@@ -252,21 +252,21 @@
   {
     "id": 26,
     "name": "College of Music Library",
-    "coords": [14.6521, 121.0714],
+    "coords": [14.656899311481881, 121.06521904370383],
     "description": "Library of the College of Music.",
     "college": "College of Music",
     "status": "Active",
-    "hasStamp": false,
+    "hasStamp": true,
     "features": ["Reading Areas", "Wi-Fi", "Photocopy"]
   },
   {
     "id": 27,
     "name": "NCPAG Library",
-    "coords": [14.6518, 121.0725],
+    "coords": [14.657217436490958, 121.0605315318859],
     "description": "Library of the National College of Public Administration and Governance.",
     "college": "NCPAG",
     "status": "Active",
-    "hasStamp": false,
+    "hasStamp": true,
     "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
   },
   {
@@ -412,21 +412,21 @@
   {
     "id": 42,
     "name": "Population Institute Library",
-    "coords": [14.6521, 121.0718],
+    "coords": [14.652698613256996, 121.06882278261456],
     "description": "Library of the Population Institute.",
     "college": "CSSP",
     "status": "Active",
-    "hasStamp": false,
+    "hasStamp": true,
     "features": ["Specialized Collection"]
   },
   {
     "id": 43,
     "name": "College of Social Work and Community Development Library (CSWCD Library)",
-    "coords": [14.6554, 121.0709],
+    "coords": [14.657271123135214, 121.06366640043008],
     "description": "Library of CSWCD.",
     "college": "CSWCD",
     "status": "Active",
-    "hasStamp": false,
+    "hasStamp": true,
     "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
   },
   {
@@ -452,11 +452,11 @@
   {
     "id": 46,
     "name": "School of Urban and Regional Planning Library (SURP Library)",
-    "coords": [14.6558, 121.0707],
+    "coords": [14.656929161580292, 121.06274318482771],
     "description": "Library of SURP.",
     "college": "SURP",
     "status": "Active",
-    "hasStamp": false,
+    "hasStamp": true,
     "features": ["Reading Areas", "Computer Use", "Wi-Fi"]
   },
   {
@@ -598,5 +598,15 @@
     "status": "Special Stop",
     "hasStamp": false,
     "features": ["Film Archives", "Special Collections"]
+  },
+  {
+    "id": 61,
+    "name": "University Archives",
+    "coords": [14.657112220050351, 121.06947721215082],
+    "description": "University Archives",
+    "college": "UP Main Library",
+    "status": "Special Stop",
+    "hasStamp": true,
+    "features": ["Special Collections"]
   }
 ]
